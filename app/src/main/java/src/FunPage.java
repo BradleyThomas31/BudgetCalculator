@@ -6,6 +6,12 @@ import java.awt.event.ActionListener;
 
 public class FunPage extends BasePage {
 
+    private NodeModel nodeModel;
+
+    public FunPage(NodeModel nodeModel) {
+        this.nodeModel = nodeModel;
+    }
+
     @Override
     public JPanel handle() {
         JPanel panel = new JPanel();

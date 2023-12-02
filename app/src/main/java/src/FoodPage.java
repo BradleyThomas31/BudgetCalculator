@@ -6,10 +6,17 @@ import java.awt.event.ActionListener;
 
 public class FoodPage extends BasePage {
 
+    private NodeModel nodeModel;
+
+    public FoodPage(NodeModel nodeModel) {
+        this.nodeModel = nodeModel;
+    }
+
     @Override
     public JPanel handle() {
         JPanel panel = new JPanel();
         panel.add(new JLabel("Food Page"));
+
         JButton button = new JButton("Next");
         button.addActionListener(new ActionListener() {
             @Override

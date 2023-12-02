@@ -7,13 +7,15 @@ public class App extends JFrame  {
         setTitle("Budget Calculatr");
         setSize(500, 500);
 
-        BasePage homePage = new HomePage();
-        BasePage rentPage = new RentPage();
-        BasePage foodPage = new FoodPage();
-        BasePage transitPage = new TransitPage();
-        BasePage funPage = new FunPage();
-        BasePage otherPage = new OtherPage();
-        BasePage resultPage = new ResultPage();
+        NodeModel nodeModel = new NodeModel();
+
+        BasePage homePage = new HomePage(nodeModel);
+        BasePage rentPage = new RentPage(nodeModel);
+        BasePage foodPage = new FoodPage(nodeModel);
+        BasePage transitPage = new TransitPage(nodeModel);
+        BasePage funPage = new FunPage(nodeModel);
+        BasePage otherPage = new OtherPage(nodeModel);
+        BasePage resultPage = new ResultPage(nodeModel);
 
         homePage.setNext(rentPage); 
         rentPage.setNext(transitPage);    

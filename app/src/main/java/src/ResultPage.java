@@ -6,10 +6,22 @@ import java.awt.event.ActionListener;
 
 public class ResultPage extends BasePage {
 
+    private NodeModel nodeModel;
+
+    public ResultPage(NodeModel nodeModel) {
+        this.nodeModel = nodeModel;
+    }
+
     @Override
     public JPanel handle() {
         JPanel panel = new JPanel();
+
         panel.add(new JLabel("Result Page"));
+
+
+JTextField textField = new JTextField(String.valueOf(nodeModel.dataList[nodeModel.index - 1].importance));
+panel.add(textField);
+
         JButton button = new JButton("Next");
         button.addActionListener(new ActionListener() {
             @Override

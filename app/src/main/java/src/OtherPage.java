@@ -6,6 +6,12 @@ import java.awt.event.ActionListener;
 
 public class OtherPage extends BasePage {
 
+    private NodeModel nodeModel;
+
+    public OtherPage(NodeModel nodeModel) {
+        this.nodeModel = nodeModel;
+    }
+
     @Override
     public JPanel handle() {
         JPanel panel = new JPanel();

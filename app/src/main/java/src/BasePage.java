@@ -7,7 +7,6 @@ public abstract class BasePage implements GUIHandler {
 
     protected JPanel panel;
     protected BasePage next;
-//add other fields, like expected percent, improtance from 1-10, estiamted current value, etc.
 
     public BasePage() {
     }
