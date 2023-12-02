@@ -7,9 +7,6 @@ import java.awt.event.ActionListener;
 
 public class HomePage extends BasePage {
 
-    JPanel panel;
-    private NodeModel nodeModel;
-
     public HomePage(NodeModel nodeModel) {
         this.nodeModel = nodeModel;
     }

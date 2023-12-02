@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class FunPage extends BasePage {
 
-    private NodeModel nodeModel;
+//    private NodeModel nodeModel;
 
     public FunPage(NodeModel nodeModel) {
         this.nodeModel = nodeModel;

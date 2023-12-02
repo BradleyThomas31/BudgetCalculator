@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class OtherPage extends BasePage {
 
-    private NodeModel nodeModel;
+//    private NodeModel nodeModel;
 
     public OtherPage(NodeModel nodeModel) {
         this.nodeModel = nodeModel;
