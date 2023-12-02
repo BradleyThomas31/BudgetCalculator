@@ -1,5 +1,11 @@
 package src;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -7,26 +13,28 @@ import java.awt.event.ActionListener;
 
 public class ResultPage extends BasePage {
 
-//    private NodeModel nodeModel;
- //   JPanel panel;
+    String values[];
+    String ranks[];
+    String names[];
+    String[] cols;
+    Object[][] tableData;
+    DefaultPieDataset pieData;
 
     public ResultPage(NodeModel nodeModel) {
+
         this.nodeModel = nodeModel;
     }
 
     @Override
     public JPanel handle() {
         panel = new JPanel();
-
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(new JLabel("Result Page"));
+        initData();
         createTable();
+        createChart();
 
-
-JTextField textField = new JTextField(String.valueOf(nodeModel.index));
-//JTextField textField = new JTextField(String.valueOf(nodeModel.dataList.length));
-//JTextField textField = new JTextField(String.valueOf(nodeModel.dataList[nodeModel.index - 1].importance));
-panel.add(textField);
-
+//make this go home
         JButton button = new JButton("Next");
         button.addActionListener(new ActionListener() {
             @Override
@@ -45,23 +53,44 @@ panel.add(textField);
     }
 
     void createTable() {
-        String values[] = new String[nodeModel.index];
-        String ranks[] = new String[nodeModel.index];
-        String names[] = new String[nodeModel.index];
+        DefaultTableModel model = new DefaultTableModel(tableData, cols);
+        JTable table = new JTable(model);
+        panel.add(table);
+    }
+
+    public void createChart() {
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Your Budget",
+                pieData,
+                true,  
+                true,
+                false);
+
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(25060, 250));
+        panel.add(chartPanel);
+        panel.revalidate(); 
+    }
+
+    public void initData() {
+        this.values = new String[nodeModel.index];
+        this.ranks = new String[nodeModel.index];
+        this.names = new String[nodeModel.index];
+        this.cols = new String[]{"Name", "Value", "Importance"};
+        this.tableData = new Object[nodeModel.index][3];
+        pieData = new DefaultPieDataset();
         for (int i = 0; i < nodeModel.index; i++) {
             names[i] = nodeModel.dataList[i].name;
             ranks[i] = Double.toString(nodeModel.dataList[i].importance);
             values[i] = Double.toString(nodeModel.dataList[i].amount);
         }
-        String[] cols = {"Name", "Value", "Importance"};
-       Object[][] data = new Object[nodeModel.index][3];
         for (int i = 0; i < nodeModel.index; i++) {
-            data[i][0] = names[i];
-            data[i][1] = values[i];
-            data[i][2] = ranks[i];
+            tableData[i][0] = names[i];
+            tableData[i][1] = values[i];
+            tableData[i][2] = ranks[i];
         }
-        DefaultTableModel model = new DefaultTableModel(data, cols);
-        JTable table = new JTable(model);
-        panel.add(table);
+        for (int i = 0; i < names.length; i++) {
+            pieData.setValue(names[i], Double.parseDouble(values[i]));
+        }
     }
 }

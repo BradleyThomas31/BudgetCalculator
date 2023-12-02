@@ -93,7 +93,7 @@ public class BasePage implements GUIHandler {
         URL imageUrl = getClass().getResource(imagePath);
         ImageIcon imageIcon = new ImageIcon(imageUrl);
         Image rawImage = imageIcon.getImage();
-        Image sizedImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        Image sizedImage = rawImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(sizedImage);
         JLabel imageLabel = new JLabel(imageIcon);
         panel.add(imageLabel);

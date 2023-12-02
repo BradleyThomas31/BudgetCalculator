@@ -6,7 +6,7 @@ public class OtherPage extends BasePage {
         super(
             nodeModel,
             "Other",
-            "Do you have any other major expenses? (Ex. 246.12)",
-            "/food.jpg");
+            "Do you have any other expenses?? (Ex. 187.00)",
+            "/other.jpg");
     }
 }
