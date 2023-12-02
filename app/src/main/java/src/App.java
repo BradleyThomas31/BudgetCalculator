@@ -10,10 +10,7 @@ public class App extends JFrame  {
         NodeModel nodeModel = new NodeModel();
 
         BasePage homePage = new HomePage(nodeModel);
-        BasePage rentPage = new RentPage(nodeModel,
-                            "Rent", 
-                             "How much do you currently pay in rent?", 
-                             "/housing.jpg");
+        BasePage rentPage = new RentPage(nodeModel);
         BasePage foodPage = new FoodPage(nodeModel);
         BasePage transitPage = new TransitPage(nodeModel);
         BasePage funPage = new FunPage(nodeModel);

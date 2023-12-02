@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.net.URL;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.*;
 
 public class BasePage implements GUIHandler {
 
@@ -17,6 +18,13 @@ public class BasePage implements GUIHandler {
     String imagePath;
 
     public BasePage() {
+    }
+
+    public BasePage(NodeModel nodeModel, String name, String question, String imagePath) {
+        this.nodeModel = nodeModel;
+        this.name = name;
+        this.question = question;
+        this.imagePath = imagePath;
     }
 
     public BasePage getNext() {
@@ -84,6 +92,9 @@ public class BasePage implements GUIHandler {
     public void addImage() {
         URL imageUrl = getClass().getResource(imagePath);
         ImageIcon imageIcon = new ImageIcon(imageUrl);
+        Image rawImage = imageIcon.getImage();
+        Image sizedImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(sizedImage);
         JLabel imageLabel = new JLabel(imageIcon);
         panel.add(imageLabel);
         JTextArea text = new JTextArea();
