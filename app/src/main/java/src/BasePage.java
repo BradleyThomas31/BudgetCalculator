@@ -23,6 +23,7 @@ public class BasePage implements GUIHandler {
     }
 
     //creates a base page and inits vars
+    //these fields are later fed into the nodeModel
     public BasePage(NodeModel nodeModel, String name, String question, String imagePath) {
         this.nodeModel = nodeModel;
         this.name = name;
