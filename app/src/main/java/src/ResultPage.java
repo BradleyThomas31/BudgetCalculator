@@ -73,18 +73,18 @@ public class ResultPage extends BasePage {
     }
 
     public void initData() {
-        this.values = new String[nodeModel.index];
-        this.ranks = new String[nodeModel.index];
-        this.names = new String[nodeModel.index];
+        this.values = new String[nodeModel.getIndex()];
+        this.ranks = new String[nodeModel.getIndex()];
+        this.names = new String[nodeModel.getIndex()];
         this.cols = new String[]{"Name", "Value", "Importance"};
-        this.tableData = new Object[nodeModel.index][3];
+        this.tableData = new Object[nodeModel.getIndex()][3];
         pieData = new DefaultPieDataset();
-        for (int i = 0; i < nodeModel.index; i++) {
-            names[i] = nodeModel.dataList[i].name;
-            ranks[i] = Double.toString(nodeModel.dataList[i].importance);
-            values[i] = Double.toString(nodeModel.dataList[i].amount);
+        for (int i = 0; i < nodeModel.getIndex(); i++) {
+            names[i] = nodeModel.getIndex(i).getName();
+            ranks[i] = Double.toString(nodeModel.getIndex(i).getImportance());
+            values[i] = Double.toString(nodeModel.getIndex(i).getAmount());
         }
-        for (int i = 0; i < nodeModel.index; i++) {
+        for (int i = 0; i < nodeModel.getIndex(); i++) {
             tableData[i][0] = names[i];
             tableData[i][1] = values[i];
             tableData[i][2] = ranks[i];

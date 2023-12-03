@@ -54,9 +54,11 @@ public class BasePage implements GUIHandler {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                nodeModel.dataList[nodeModel.index] = new Node(name, Double.parseDouble(value.getText()), Integer.parseInt(ranking.getText()));
-                nodeModel.index++;
+                Node newNode = new Node(
+                               name, 
+                               Double.parseDouble(value.getText()), 
+                               Integer.parseInt(ranking.getText()));
+                nodeModel.add(newNode);
 
                 if (next != null) {
                     panel.removeAll();
