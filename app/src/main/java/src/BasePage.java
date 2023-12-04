@@ -41,6 +41,41 @@ public class BasePage implements GUIHandler {
         return panel;
     }
 
+    //sets the panel
+    public void setPanel(JPanel panelParam) {
+        panel = panelParam;
+    }
+
+    //returns ranking
+    public JTextField getRanking() {
+        return ranking;
+    }
+
+    //returns ranking
+    public void setRanking(JTextField input) {
+        ranking = input;
+    }
+
+    //returns value (ie. amount of the budget item)
+    public JTextField getValue() {
+        return value;
+    }
+
+    //returns the node model
+    public NodeModel getNodeModel() {
+        return nodeModel;
+    }
+
+    //returns the question
+    public String getQuestion() {
+        return question;
+    }
+
+    //returns name
+    public String getName() {
+        return name;
+    }
+
     //sets the next page
     public void setNext(BasePage nextHandler) {
         this.next = nextHandler;
