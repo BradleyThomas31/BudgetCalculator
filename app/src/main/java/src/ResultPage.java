@@ -65,31 +65,32 @@ public class ResultPage extends BasePage {
         this.values = new String[nodeModel.getIndex()];
         this.ranks = new String[nodeModel.getIndex()];
         this.names = new String[nodeModel.getIndex()];
-
         //creates the columns 
         this.cols = new String[]{"Name", "Value", "Importance"};
 
         //creates the table data
         //3 columns, and index number of rows
-        this.tableData = new Object[nodeModel.getIndex()][3];
-
+        this.tableData = new Object[nodeModel.getIndex() + 1][3];
         //standard init
         pieData = new DefaultPieDataset();
 
         //adds data to the arrays based on nodeModel fields
         for (int i = 0; i < nodeModel.getIndex(); i++) {
             names[i] = nodeModel.getIndex(i).getName();
-            ranks[i] = Double.toString(nodeModel.getIndex(i).getImportance());
+            ranks[i] = Integer.toString(nodeModel.getIndex(i).getImportance());
             values[i] = Double.toString(nodeModel.getIndex(i).getAmount());
         }
-
+        //adds column names
+        tableData[0][0] = "Type";
+        tableData[0][1] = "Amount";
+        tableData[0][2] = "Importance";
+System.out.println("d");
         //sets data for the 3 columns
-        for (int i = 0; i < nodeModel.getIndex(); i++) {
-            tableData[i][0] = names[i];
-            tableData[i][1] = values[i];
-            tableData[i][2] = ranks[i];
+        for (int i = 1; i < nodeModel.getIndex() + 1; i++) {
+            tableData[i][0] = names[i - 1];
+            tableData[i][1] = values[i - 1];
+            tableData[i][2] = ranks[i - 1];
         }
-     
         //sets pie chart data 
         for (int i = 0; i < names.length; i++) {
             pieData.setValue(names[i], Double.parseDouble(values[i]));
