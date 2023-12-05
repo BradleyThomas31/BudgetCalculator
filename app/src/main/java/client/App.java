@@ -1,14 +1,18 @@
-package src;
+package client;
 
+import src.*;
 import javax.swing.*;
 
+//This class runs the Budget Application
 public class App extends JFrame  {
     public App() {
-        setTitle("Budget Calculatr");
+        setTitle("Budget Application");
         setSize(500, 500);
 
+        //shared model which stores data
         NodeModel nodeModel = new NodeModel();
 
+        //creates the pages
         BasePage homePage = new HomePage(nodeModel);
         BasePage rentPage = new RentPage(nodeModel);
         BasePage foodPage = new FoodPage(nodeModel);
@@ -17,6 +21,7 @@ public class App extends JFrame  {
         BasePage otherPage = new OtherPage(nodeModel);
         BasePage resultPage = new ResultPage(nodeModel);
 
+        //sets up the chain
         homePage.setNext(rentPage); 
         rentPage.setNext(transitPage);    
         transitPage.setNext(foodPage);
@@ -24,8 +29,10 @@ public class App extends JFrame  {
         funPage.setNext(otherPage);
         otherPage.setNext(resultPage);
 
+        //starts the chain
         homePage.handle();
 
+        //ends the program
         JPanel finalPanel = homePage.handle();
         if (finalPanel != null) {
         this.setContentPane(finalPanel);
@@ -38,10 +45,6 @@ public class App extends JFrame  {
 
     public static void main(String[] args) {
         new App();
-    }
-
-    public String getGreeting() {
-        return "Hello World!";
     }
 }
 

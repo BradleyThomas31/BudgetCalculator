@@ -1,15 +1,10 @@
 package src;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
-
-import javax.swing.JFrame;
+import org.jfree.chart.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 //the null end of the node chain
 //displays data from the nodeModel

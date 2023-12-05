@@ -2,8 +2,7 @@ package src;
 
 import javax.swing.*;
 import java.net.URL;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.*;
 
 //The Base page to be extended
