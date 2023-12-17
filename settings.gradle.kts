@@ -12,3 +12,4 @@ plugins {
 
 rootProject.name = "budgetCalculator"
 include("app")
+
